@@ -11,7 +11,7 @@ export default createGlobalStyle`
   body {
     font-family: 'Archivo Black', sans-serif;
     -webkit-font-smoothing: antialiased !important;
-    background-color: #E5E5E5;
+    background-color: #fff;
     color: #444
   }
 
