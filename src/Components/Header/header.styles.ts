@@ -11,7 +11,7 @@ export const InputCustom = styled(DebounceInput)`
   padding: 10px 20px;
   outline: none;
   min-width: 240px;
-  width: 97%;
+  width: 100%;
   box-sizing: border-box;
   border-radius: 5px;
   border: none;

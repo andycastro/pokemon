@@ -27,6 +27,8 @@ export default function PokemonProvider({ children }: any) {
     });
   }, [currentPage]);
 
+  console.log("resposta", pokemons);
+
   return (
     <PokemonContext.Provider
       value={{

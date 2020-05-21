@@ -14,8 +14,8 @@ const Pagination = () => {
   }
   return (
     <>
-      <Button onClick={gotoPrevPage}>prev</Button>
-      <Button onClick={gotoNextPage}>next</Button>
+      <Button onClick={gotoPrevPage}>Prev</Button>
+      <Button onClick={gotoNextPage}>Next</Button>
     </>
   );
 };
