@@ -46,6 +46,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Branchs
 
 - Master (just God here!)
-- Develop (playground wow!)
-- |-Features (enter back log, exit new features!)
+- Develop (playground, wow!)
 - Qa (Winter is coming!)
