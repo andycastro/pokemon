@@ -47,6 +47,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 - Master (just God here!)
 - Develop (playground wow!)
+  |-Features (enter back log, exit new features!)
 - Qa (Winter is coming!)
-- Develop
-  - |-Features (enter back log, exit new features!)
