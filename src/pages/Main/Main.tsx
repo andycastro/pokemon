@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Header from "../../Components/Header/Header";
+import Pagination from "../../Components/Pagination/Pagination";
 import { usePokemon } from "../../context/pokemons";
 
 const Main = () => {
-  const { pokemons } = usePokemon();
+  const { pokemons, loading } = usePokemon();
+
+  console.log("LOADING", loading);
 
   const [searchResult, setSearchResult] = useState<any>([]);
 
@@ -22,11 +25,15 @@ const Main = () => {
   return (
     <>
       <Header handleInputChange={handleInputChange} />
-      <ul>
-        {list.map((listPokemon: any) => {
-          return <li key={listPokemon.name}> {listPokemon.name}</li>;
-        })}
-      </ul>
+      {loading && <p>loading...</p>}
+      {!loading && (
+        <ul>
+          {list.map((listPokemon: any) => {
+            return <li key={listPokemon.name}> {listPokemon.name}</li>;
+          })}
+        </ul>
+      )}
+      <Pagination />
     </>
   );
 };
