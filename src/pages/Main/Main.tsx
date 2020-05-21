@@ -1,24 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { Title } from "./main.styles";
-import PokemonService from "../../services/pokemon.sevice";
+import React, { useState } from "react";
+import Header from "../../Components/Header/Header";
+import { usePokemon } from "../../context/pokemons";
 
-const Main: React.FC = () => {
-  const [pokemons, setPokemons] = useState<any>([]);
+const Main = () => {
+  const { pokemons } = usePokemon();
 
-  useEffect(() => {
-    PokemonService.getPokemons().then((response) => {
-      console.log("RESPONSE", response.data.results);
-      setPokemons(response.data.results);
+  const [searchResult, setSearchResult] = useState<any>([]);
+
+  const handleInputChange = (e: any) => {
+    const searchBy = e.target.value || "";
+    const lowerSearch = searchBy.toLowerCase();
+    const resultSearch = pokemons.filter((element: any) => {
+      const lowerElement = element.name.toLowerCase();
+      return lowerElement.indexOf(lowerSearch) !== -1;
     });
-  }, []);
+    setSearchResult(resultSearch);
+  };
+
+  const list = searchResult.length !== 0 ? searchResult : pokemons;
 
   return (
     <>
-      <Title>Mains</Title>
-
+      <Header handleInputChange={handleInputChange} />
       <ul>
-        {pokemons.map((lista: any) => {
-          return <li key={lista.name}> {lista.name}</li>;
+        {list.map((listPokemon: any) => {
+          return <li key={listPokemon.name}> {listPokemon.name}</li>;
         })}
       </ul>
     </>
