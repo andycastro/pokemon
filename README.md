@@ -45,6 +45,9 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Branchs
 
-- Master (just God here!)
-- Develop (playground, wow!)
-- Qa (Winter is coming!)
+- Master 
+- Develop
+- Qa
+
+![](mobile.gif)
+![](responsive.gif)
