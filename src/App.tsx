@@ -12,7 +12,7 @@ function App() {
           <Route exact path="/">
             <Main />
           </Route>
-          <Route path="/details">
+          <Route path="/details/:id">
             <Details />
           </Route>
         </PokemonProvider>
