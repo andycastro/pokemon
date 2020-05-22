@@ -1,7 +1,6 @@
 Projeto Pokemon
 
 ![](printDesktop.png)
-![](printMobile.png)
 
 ## Available Scripts
 
