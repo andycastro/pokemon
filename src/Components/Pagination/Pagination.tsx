@@ -1,6 +1,6 @@
 import React from "react";
 import { usePokemon } from "../../context/pokemons";
-import { Button } from "./pagination.style";
+import { BoxButtonsPagination, Button } from "./pagination.style";
 
 const Pagination = () => {
   const { setCurrentpage, nextPage, prevPage } = usePokemon();
@@ -14,8 +14,10 @@ const Pagination = () => {
   }
   return (
     <>
-      <Button onClick={gotoPrevPage}>Prev</Button>
-      <Button onClick={gotoNextPage}>Next</Button>
+      <BoxButtonsPagination>
+        <Button onClick={gotoPrevPage}>Prev</Button>
+        <Button onClick={gotoNextPage}>Next</Button>
+      </BoxButtonsPagination>
     </>
   );
 };

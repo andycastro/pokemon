@@ -1,5 +1,5 @@
 import React from "react";
-import { Title, InputCustom } from "./header.styles";
+import { Title, InputCustom, Description } from "./header.styles";
 
 const Header = (props: any) => {
   const { handleInputChange } = props;
@@ -7,11 +7,12 @@ const Header = (props: any) => {
   return (
     <>
       <Title>Pokémon</Title>
+      <Description>Search for Pokémon by name.</Description>
       <form>
         <InputCustom
           debounceTimeout={700}
           type="text"
-          placeholder="Busca"
+          placeholder="What Pokémon are you looking for?"
           onChange={handleInputChange}
         />
       </form>
