@@ -16,26 +16,22 @@ export default function PokemonProvider({ children }: any) {
 
   useEffect(() => {
     setLoading(true);
-    console.log("Effect");
     api.get(currentPage).then((response) => {
       setLoading(false);
       setNextpage(response.data.next);
       setPrevpage(response.data.previous);
       setPokemons(response.data.results);
-      console.log("Then", response.data.results);
-      console.log("Prev", response.data.previous);
-      console.log("Next", response.data.next);
     });
   }, [currentPage]);
 
   useEffect(() => {
+    setLoading(true);
     if (idPokemon) {
       api
         .get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
         .then((response) => {
+          setLoading(false);
           setDataPokemons(response.data.stats);
-          console.log("id then", idPokemon);
-          console.log(response.data.stats);
         });
     }
   }, [idPokemon]);

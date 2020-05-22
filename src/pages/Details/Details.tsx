@@ -10,29 +10,24 @@ const Details = () => {
     dataPokemons,
   } = usePokemon();
 
-  useEffect(() => {
-    // setIdPokemon("43");
-  });
-
-  console.log("Dados", dataPokemons);
-
-  console.log(idPokemon);
-
-  const data = dataPokemons.data;
+  const data = dataPokemons;
 
   return (
     <>
       <h1>interna</h1>
-      <ul>
-        {dataPokemons.map((listPokemondata: any, index: number) => {
-          return (
-            <li key={index}>
-              {listPokemondata.stat.name}
-              {listPokemondata.base_stat}
-            </li>
-          );
-        })}
-      </ul>
+      {loading && <p>loading...</p>}
+      {!loading && (
+        <ul>
+          {dataPokemons.map((listPokemondata: any, index: number) => {
+            return (
+              <li key={index}>
+                {listPokemondata.stat.name}
+                {listPokemondata.base_stat}
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 };
