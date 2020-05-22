@@ -1,28 +1,24 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import PokemonService from "../services/pokemon.sevice";
 import api from "../services/api";
+import { PokeData } from "./pokemons.interface";
 
-interface PokeData {
-  name: string;
-  url: string;
-}
-
-const PokemonContext = createContext<any>([]);
+const PokemonContext = createContext<any>({});
 
 export default function PokemonProvider({ children }: any) {
   const [pokemons, setPokemons] = useState<PokeData[]>([]);
 
-  const [currentPage, setCurrentpage] = useState<string>("pokemon?limit=10");
+  const [currentPage, setCurrentpage] = useState<string>("pokemon?limit=50");
   const [nextPage, setNextpage] = useState<string>("");
   const [prevPage, setPrevpage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
+  const [idPokemon, setIdPokemon] = useState<string>("");
 
   useEffect(() => {
     setLoading(true);
     api.get(currentPage).then((response) => {
       setLoading(false);
       setNextpage(response.data.next);
-      setPrevpage(response.data.prev);
+      setPrevpage(response.data.previous);
       setPokemons(response.data.results);
     });
   }, [currentPage]);
@@ -36,6 +32,8 @@ export default function PokemonProvider({ children }: any) {
         setCurrentpage,
         nextPage,
         prevPage,
+        idPokemon,
+        setIdPokemon,
       }}
     >
       {children}
@@ -52,6 +50,17 @@ export function usePokemon() {
     setCurrentpage,
     nextPage,
     prevPage,
+    idPokemon,
+    setIdPokemon,
   } = context;
-  return { pokemons, setPokemons, loading, setCurrentpage, nextPage, prevPage };
+  return {
+    pokemons,
+    setPokemons,
+    loading,
+    setCurrentpage,
+    nextPage,
+    prevPage,
+    idPokemon,
+    setIdPokemon,
+  };
 }
