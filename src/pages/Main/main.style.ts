@@ -22,11 +22,15 @@ export const Box = styled.div`
       -webkit-box-shadow: 0px 14px 17px -14px rgba(0, 0, 0, 0.75);
       -moz-box-shadow: 0px 14px 17px -14px rgba(0, 0, 0, 0.75);
       box-shadow: 0px 14px 17px -14px rgba(0, 0, 0, 0.75);
-      @media (max-width: 500px) {
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+      @media (max-width: 712px) {
         width: 100%;
       }
-      @media (min-width: 501px) and (max-width: 900px) {
-        width: 32%;
+      @media (min-width: 713px) and (max-width: 900px) {
+        width: 48%;
         margin: 10px 1px;
       }
       img {
@@ -39,6 +43,7 @@ export const Box = styled.div`
         color: #fff;
         letter-spacing: -1px;
         font-weight: 600;
+        text-transform: capitalize;
       }
     }
   }

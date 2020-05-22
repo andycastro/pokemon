@@ -7,11 +7,10 @@ const PokemonContext = createContext<any>({});
 export default function PokemonProvider({ children }: any) {
   const [pokemons, setPokemons] = useState<PokeData[]>([]);
 
-  const [currentPage, setCurrentpage] = useState<string>("pokemon?limit=15");
+  const [currentPage, setCurrentpage] = useState<string>("pokemon?limit=50");
   const [nextPage, setNextpage] = useState<string>("");
   const [prevPage, setPrevpage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
-  const [dataPokemons, setDataPokemons] = useState<any>([]);
   const [idPokemon, setIdPokemon] = useState<string>("");
 
   useEffect(() => {
@@ -24,18 +23,6 @@ export default function PokemonProvider({ children }: any) {
     });
   }, [currentPage]);
 
-  useEffect(() => {
-    setLoading(true);
-    if (idPokemon) {
-      api
-        .get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
-        .then((response) => {
-          setLoading(false);
-          setDataPokemons(response.data.stats);
-        });
-    }
-  }, [idPokemon]);
-
   return (
     <PokemonContext.Provider
       value={{
@@ -47,7 +34,6 @@ export default function PokemonProvider({ children }: any) {
         prevPage,
         idPokemon,
         setIdPokemon,
-        dataPokemons,
       }}
     >
       {children}
@@ -66,7 +52,6 @@ export function usePokemon() {
     prevPage,
     idPokemon,
     setIdPokemon,
-    dataPokemons,
   } = context;
   return {
     pokemons,
@@ -77,6 +62,5 @@ export function usePokemon() {
     prevPage,
     idPokemon,
     setIdPokemon,
-    dataPokemons,
   };
 }

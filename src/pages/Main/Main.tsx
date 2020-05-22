@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../../Components/Loading/Loading";
+import Logo from "../../Components/Logo/Logo";
 import Header from "../../Components/Header/Header";
 import Pagination from "../../Components/Pagination/Pagination";
 import { usePokemon } from "../../context/pokemons";
@@ -8,7 +10,6 @@ import { Box, Info } from "./main.style";
 
 const Main = () => {
   const { pokemons, loading, setIdPokemon } = usePokemon();
-
   const [searchResult, setSearchResult] = useState<any>([]);
 
   const handleInputChange = (e: any) => {
@@ -23,16 +24,13 @@ const Main = () => {
 
   const list = searchResult.length !== 0 ? searchResult : pokemons;
 
-  // const gotoDetails = (idPokemon: string) => {
-  //   window.location.href = `/details/${idPokemon}`;
-  // };
-
   return (
     <>
       <Container>
+        <Logo subtitle={"Search for Pokémon by name."} />
         <Header handleInputChange={handleInputChange} />
         <Box>
-          {loading && <p>loading...</p>}
+          {loading && <Loading />}
           {!loading && (
             <ul>
               {list.map((pokemonData: any, index: string) => {
